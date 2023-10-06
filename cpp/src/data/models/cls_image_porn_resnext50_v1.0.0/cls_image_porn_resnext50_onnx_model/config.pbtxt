@@ -1,0 +1,24 @@
+name: "cls_image_porn_resnext50_onnx_model"
+platform: "onnxruntime_onnx"
+default_model_filename: "cls_image_porn_resnext50_v1.0.0.onnx"
+max_batch_size: 0
+optimization { execution_accelerators {
+  gpu_execution_accelerator : [ { name : "tensorrt" } ]
+}}
+input [
+  {
+    name: "input0"
+    data_type: TYPE_FP32
+    format: FORMAT_NCHW
+    dims: [3, 300, 300]
+    reshape: {shape: [1, 3, 300, 300]}
+  }
+]
+
+output [
+  {
+    name: "output0"
+    data_type: TYPE_FP32
+    dims: [1, 3]
+  }
+]
